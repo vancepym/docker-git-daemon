@@ -1,10 +1,8 @@
 FROM ubuntu:xenial-20170119
 MAINTAINER Scott Fan <fancp2007@gmail.com>
 
-RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends && \
-    echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends && \
-    apt update && \
-    apt install -y git-daemon-run && \
+RUN apt update && \
+    apt install -y --no-install-recommends git-daemon-run && \
     rm -rf /var/lib/apt/lists/*
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
